@@ -7,7 +7,7 @@
 
 This is a cross platform jQuery library to create a QRcode reader for HTML5 compatible browser.
 
-The decode used for the QRcode reading is from LazarSoft
+The decoder used for the QRcode reading is from LazarSoft
 [https://github.com/LazarSoft/jsqrcode](https://github.com/LazarSoft/jsqrcode)
 
 
@@ -28,14 +28,15 @@ Presently width and height attributes must be set.
 Then call the ```html5_qrcode``` funciton on the ```div```. 
  
 ```
- $('#element').html5_qrcode(function(data){
- 	// do something when code is read
+ $('#reader').html5_qrcode(function(data){
+ 		 // do something when code is read
  	},
  	function(error){
 		//show read errors 
 	}, function(videoError){
-
-});
+		//the video stream could be opened
+	}
+);
 ```
 
 It takes three callbacks: a ```readSuccess```, ```readError```, and ```videoLoadError```. The readError wil be called quite often, it is really only useful for debugging. 
