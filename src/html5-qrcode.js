@@ -46,7 +46,7 @@
         setTimeout(scan, 500);
 
       } else {
-        setTimeout(svan,500);
+        setTimeout(scan,500);
       }
     }//end snapshot function
     
