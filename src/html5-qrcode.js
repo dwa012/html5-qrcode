@@ -25,6 +25,7 @@
     var video = $('#html5_qrcode_video').get(0);
     var canvas;
     var context; 
+    var localMediaStream;
     
     $('#qr-canvas').each(function(index, element) {
       canvas = element;
