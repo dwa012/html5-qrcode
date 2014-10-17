@@ -29,7 +29,7 @@ Presently width and height attributes must be set.
  </div>
 ```
 
-Then call the ```html5_qrcode``` funciton on the ```div```. 
+Then call the ```html5_qrcode``` function on the ```div```. 
  
 ```
  $('#reader').html5_qrcode(function(data){
