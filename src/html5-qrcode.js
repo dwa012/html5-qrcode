@@ -14,25 +14,13 @@
       width = 300;
     }
     
-    var vidTag = '<video id="html5_qrcode_video" width="' + width + 'px" height="' + height + 'px"></video>' 
-    var canvasTag = '<canvas id="qr-canvas" width="' + (width - 2) + 'px" height="' + (height - 2) + 'px" style="display:none;"></canvas>' 
+    var vidElem = $('<video id="html5_qrcode_video" width="' + width + 'px" height="' + height + 'px"></video>').appendTo(this);
+    var canvasElem = $('<canvas id="qr-canvas" width="' + (width - 2) + 'px" height="' + (height - 2) + 'px" style="display:none;"></canvas>').appendTo(this);
     
-    this.append(vidTag);
-    this.append(canvasTag);
-        
-     
-    
-    var video = $('#html5_qrcode_video').get(0);
-    var canvas;
-    var context; 
+    var video = vidElem[0];
+    var canvas = canvasElem[0];
+    var context = canvas.getContext('2d');
     var localMediaStream;
-    
-    $('#qr-canvas').each(function(index, element) {
-      canvas = element;
-      context = element.getContext('2d');   
-    });
-    
-   
     
     var scan = function() {
       if (localMediaStream) {
