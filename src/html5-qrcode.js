@@ -1,9 +1,15 @@
 (function( $ ){
   jQuery.fn.extend({
+    html5_qrcode_stop: function() {
+      return this.each(function() {
+        html5_qrcode_running = false;
+      })
+    },
     html5_qrcode: function(qrcodeSuccess, qrcodeError, videoError) {
       return this.each(function() {
         var currentElem = $( this );
-        
+        html5_qrcode_running = true;
+
         var height = currentElem.height();
         var width = currentElem.width();
         
@@ -24,6 +30,11 @@
         var localMediaStream;
         
         var scan = function() {
+          if(!html5_qrcode_running) {
+            currentElem.html("").hide();
+            localMediaStream.stop();
+            return;
+          }
           if (localMediaStream) {
             context.drawImage(video, 0, 0, 307,250);
     
