@@ -7,11 +7,11 @@
         var height = currentElem.height();
         var width = currentElem.width();
         
-        if (height == null) {
+        if (height == null || height < 100) {
           height = 250;
         }
         
-        if (width == null) {
+        if (width == null || width < 100) {
           width = 300;
         }
         
