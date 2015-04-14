@@ -4,6 +4,7 @@
             return this.each(function() {
                 var currentElem = $(this);
 
+
                 var height = currentElem.height();
                 var width = currentElem.width();
 
@@ -30,6 +31,7 @@
                         try {
                             qrcode.decode();
                         } catch (e) {
+                            console.log(error, localMediaStream);
                             qrcodeError(e, localMediaStream);
                         }
 
@@ -39,6 +41,12 @@
                         setTimeout(scan, 500);
                     }
                 }//end snapshot function
+
+                currentElem.html5_qrcode_stop = function() {
+                    //cancel timeout
+                    //stop stream if exists
+                    localMediaStream.stop();
+                };
 
                 window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
                 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
@@ -62,9 +70,16 @@
                 }
 
                 qrcode.callback = function (result) {
+                    console.log
                     qrcodeSuccess(result, localMediaStream);
                 };
             }); // end of html5_qrcode
+        },
+        html5_qrcode_stop: function() {
+            return this.each(function() {
+                //stop the stream and cancel timeouts
+                $(this).html5_qrcode_stop();
+            });
         }
     });
 })(jQuery);
