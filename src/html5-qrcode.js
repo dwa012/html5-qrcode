@@ -4,7 +4,6 @@
             return this.each(function() {
                 var currentElem = $(this);
 
-
                 var height = currentElem.height();
                 var width = currentElem.width();
 
@@ -31,22 +30,15 @@
                         try {
                             qrcode.decode();
                         } catch (e) {
-                            console.log(error, localMediaStream);
                             qrcodeError(e, localMediaStream);
                         }
 
-                        setTimeout(scan, 500);
+                        $.data(currentElem[0], "timeout", setTimeout(scan, 500));
 
                     } else {
-                        setTimeout(scan, 500);
+                        $.data(currentElem[0], "timeout", setTimeout(scan, 500));
                     }
-                }//end snapshot function
-
-                currentElem.html5_qrcode_stop = function() {
-                    //cancel timeout
-                    //stop stream if exists
-                    localMediaStream.stop();
-                };
+                };//end snapshot function
 
                 window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
                 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
@@ -54,10 +46,11 @@
                 var successCallback = function(stream) {
                     video.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
                     localMediaStream = stream;
+                    $.data(currentElem[0], "stream", stream);
 
                     video.play();
-                    setTimeout(scan, 1000);
-                }
+                    $.data(currentElem[0], "timeout", setTimeout(scan, 1000));
+                };
 
                 // Call the getUserMedia method with our callback functions
                 if (navigator.getUserMedia) {
@@ -70,7 +63,6 @@
                 }
 
                 qrcode.callback = function (result) {
-                    console.log
                     qrcodeSuccess(result, localMediaStream);
                 };
             }); // end of html5_qrcode
@@ -78,7 +70,8 @@
         html5_qrcode_stop: function() {
             return this.each(function() {
                 //stop the stream and cancel timeouts
-                $(this).html5_qrcode_stop();
+                $(this).data('stream').stop();
+                clearTimeout($(this).data('timeout'));
             });
         }
     });
