@@ -48,6 +48,20 @@ It takes three callbacks: a ```readSuccess```, ```readError```, and ```videoLoad
 ```videoError``` is called if the HTML5 video stream cannot be opened.
 
 
+When you're done using the camera, call `$('#reader').html5_qrcode_stop()` to stop scanning for QR codes, close the stream, and relinquish permissions granted by the user.   
+(This will result in the "camera on" light on their device turning off)
+
+
+###Development
+----------------------
+
+To create your own builds, you can use [Grunt](http://gruntjs.com/). 
+A gruntfile has been set up to create minified versions of `html5-qrcode.js` and `jsqrcode-combined.js`.
+You will need npm (comes with [node](https://nodejs.org/)), and [Grunt](http://gruntjs.com/) installed first.  
+
+Once installed, clone this repo and load the submodules by running: `git submodule init` then `git submodule update`. Then run `npm install` to download the node packages for Grunt.
+
+Now, to build the minified versions just run `grunt` from the project directory in your terminal. If you're doing continuous development, you can run `grunt watch` to continuously watch javascript files in `src\` and automatically build minified versions when they are modified.
 
 
 ###MIT LICENSE
