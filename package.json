@@ -14,12 +14,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/blocktrail/html5-qrcode.git"
+    "url": "https://github.com/dwa012/html5-qrcode.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/blocktrail/html5-qrcode/issues"
+    "url": "https://github.com/dwa012/html5-qrcode/issues"
   },
-  "homepage": "https://github.com/blocktrail/html5-qrcode"
+  "homepage": "https://github.com/dwa012/html5-qrcode"
 }
