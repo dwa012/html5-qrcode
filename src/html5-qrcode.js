@@ -70,8 +70,9 @@
         html5_qrcode_stop: function() {
             return this.each(function() {
                 //stop the stream and cancel timeouts
-                $(this).data('stream').stop();
-                clearTimeout($(this).data('timeout'));
+                var currentElem = $(this);
+                $.data(currentElem[0], 'stream').stop();
+                clearTimeout($.data(currentElem[0], 'timeout'));
             });
         }
     });
