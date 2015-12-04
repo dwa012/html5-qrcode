@@ -25,7 +25,7 @@
 
                 var scan = function() {
                     if (localMediaStream) {
-                        context.drawImage(video, 0, 0, 307, 250);
+                        context.drawImage(video, 0, 0, width, height);
 
                         try {
                             qrcode.decode();
