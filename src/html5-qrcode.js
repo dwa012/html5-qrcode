@@ -1,9 +1,12 @@
-(function($) {
+(function($) {	
     jQuery.fn.extend({
         html5_qrcode: function(qrcodeSuccess, qrcodeError, videoError) {
             return this.each(function() {
                 var currentElem = $(this);
-
+				
+				var worker = $.data(currentElem[0], "worker") || new Worker('jsqrcode-combined.min.js');
+				$.data(currentElem[0], "worker", worker);
+				
                 var height = currentElem.height();
                 var width = currentElem.width();
 
@@ -26,30 +29,28 @@
                 var scan = function() {
                     if (localMediaStream) {
                         context.drawImage(video, 0, 0, 307, 250);
-
-                        try {
-                            qrcode.decode();
-                        } catch (e) {
-                            qrcodeError(e, localMediaStream);
-                        }
-
-                        $.data(currentElem[0], "timeout", setTimeout(scan, 500));
-
+                        worker.postMessage(context.getImageData(0, 0, width, height));                       
                     } else {
-                        $.data(currentElem[0], "timeout", setTimeout(scan, 500));
+                        requestAnimationFrame(scan);
                     }
                 };//end snapshot function
 
                 window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
                 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-
+				window.requestAnimationFrame = 
+						window.requestAnimationFrame       ||
+						window.webkitRequestAnimationFrame ||
+						window.mozRequestAnimationFrame    ||
+						function( callback ){
+							window.setTimeout(callback, 300);
+						};
                 var successCallback = function(stream) {
                     video.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
                     localMediaStream = stream;
                     $.data(currentElem[0], "stream", stream);
-
+					
                     video.play();
-                    $.data(currentElem[0], "timeout", setTimeout(scan, 1000));
+                    requestAnimationFrame(scan);
                 };
 
                 // Call the getUserMedia method with our callback functions
@@ -61,10 +62,17 @@
                     console.log('Native web camera streaming (getUserMedia) not supported in this browser.');
                     // Display a friendly "sorry" message to the user
                 }
-
-                qrcode.callback = function (result) {
-                    qrcodeSuccess(result, localMediaStream);
-                };
+				
+				worker.addEventListener('message', function(e) {
+					var data = e.data;
+					if(data.indexOf("data:") === 0){
+						qrcodeSuccess(data.substring(5), localMediaStream);
+					}
+					else if (data.indexOf("error:") === 0){
+						qrcodeError(data.substring(6), localMediaStream);
+					}
+					requestAnimationFrame(scan);
+				}, false);
             }); // end of html5_qrcode
         },
         html5_qrcode_stop: function() {

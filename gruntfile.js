@@ -25,6 +25,8 @@ module.exports = function(grunt) {
                         "src/jsqrcode/src/findpat.js",
                         "src/jsqrcode/src/alignpat.js",
                         "src/jsqrcode/src/databr.js",
+                        "src/qrcode_decodeImageData.js",
+                        "src/html5-qrcode_webworker.js",
                     ],
                     'lib/html5-qrcode.min.js': ['src/html5-qrcode.js']
                 },
