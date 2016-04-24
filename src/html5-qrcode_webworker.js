@@ -1,6 +1,6 @@
 (function($) {
 	qrcode.callback = function (result) {
-		self.postMessage(result);
+		self.postMessage("data:" + result);
 	};
 	self.addEventListener('message', function(e) {
 		var data = e.data;
@@ -8,7 +8,7 @@
 		try {
 			qrcode.decodeImageData(data);
 		} catch (e) {
-			self.postMessage("");
+			self.postMessage("error:" + e);
 		}	
 	});
 })();

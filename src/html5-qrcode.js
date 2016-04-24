@@ -65,8 +65,11 @@
 				
 				worker.addEventListener('message', function(e) {
 					var data = e.data;
-					if(data !== ""){
-						qrcodeSuccess(e, localMediaStream);
+					if(data.indexOf("data:") === 0){
+						qrcodeSuccess(data.substring(5), localMediaStream);
+					}
+					else if (data.indexOf("error:") === 0){
+						qrcodeError(data.substring(6), localMediaStream);
 					}
 					requestAnimationFrame(scan);
 				}, false);
