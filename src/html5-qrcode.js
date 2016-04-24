@@ -31,25 +31,29 @@
                             qrcode.decode();
                         } catch (e) {
                             qrcodeError(e, localMediaStream);
+							requestAnimationFrame(scan);
                         }
-
-                        $.data(currentElem[0], "timeout", setTimeout(scan, 500));
-
                     } else {
-                        $.data(currentElem[0], "timeout", setTimeout(scan, 500));
+                        requestAnimationFrame(scan);
                     }
                 };//end snapshot function
 
                 window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
                 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-
+				window.requestAnimationFrame = 
+						window.requestAnimationFrame       ||
+						window.webkitRequestAnimationFrame ||
+						window.mozRequestAnimationFrame    ||
+						function( callback ){
+							window.setTimeout(callback, 300);
+						};
                 var successCallback = function(stream) {
                     video.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
                     localMediaStream = stream;
                     $.data(currentElem[0], "stream", stream);
 
                     video.play();
-                    $.data(currentElem[0], "timeout", setTimeout(scan, 1000));
+                    requestAnimationFrame(scan);
                 };
 
                 // Call the getUserMedia method with our callback functions
