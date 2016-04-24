@@ -1,9 +1,12 @@
-(function($) {
+(function($) {	
     jQuery.fn.extend({
         html5_qrcode: function(qrcodeSuccess, qrcodeError, videoError) {
             return this.each(function() {
                 var currentElem = $(this);
-
+				
+				var worker = $.data(currentElem[0], "worker") || new Worker('jsqrcode-combined.min.js');
+				$.data(currentElem[0], "worker", worker);
+				
                 var height = currentElem.height();
                 var width = currentElem.width();
 
@@ -26,13 +29,7 @@
                 var scan = function() {
                     if (localMediaStream) {
                         context.drawImage(video, 0, 0, 307, 250);
-
-                        try {
-                            qrcode.decode();
-                        } catch (e) {
-                            qrcodeError(e, localMediaStream);
-							requestAnimationFrame(scan);
-                        }
+                        worker.postMessage(context.getImageData(0, 0, width, height));                       
                     } else {
                         requestAnimationFrame(scan);
                     }
@@ -51,7 +48,7 @@
                     video.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
                     localMediaStream = stream;
                     $.data(currentElem[0], "stream", stream);
-
+					
                     video.play();
                     requestAnimationFrame(scan);
                 };
@@ -65,10 +62,14 @@
                     console.log('Native web camera streaming (getUserMedia) not supported in this browser.');
                     // Display a friendly "sorry" message to the user
                 }
-
-                qrcode.callback = function (result) {
-                    qrcodeSuccess(result, localMediaStream);
-                };
+				
+				worker.addEventListener('message', function(e) {
+					var data = e.data;
+					if(data !== ""){
+						qrcodeSuccess(e, localMediaStream);
+					}
+					requestAnimationFrame(scan);
+				}, false);
             }); // end of html5_qrcode
         },
         html5_qrcode_stop: function() {
