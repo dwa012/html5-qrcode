@@ -18,7 +18,7 @@ See a demo here [http://dwa012.github.io/html5-qrcode/](http://dwa012.github.io/
 
 ###Usage
 ----------------------
-Include ```html5_qrcode.min.js``` in the ```lib``` directory.
+Include ```jsqrcode-combined.min.js``` and ```html5-qrcode.min.js``` (in this order) from the ```lib``` directory.
 
 Create a basic ```<div>``` with a given width and height. 
 
