@@ -38,7 +38,7 @@ Then call the ```html5_qrcode``` function on the ```div```.
  	function(error){
 		//show read errors 
 	}, function(videoError){
-		//the video stream could be opened
+		//the video stream couldn't be opened
 	}
 );
 ```
