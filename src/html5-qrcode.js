@@ -32,11 +32,6 @@
                         } catch (e) {
                             qrcodeError(e, localMediaStream);
                         }
-
-                        $.data(currentElem[0], "timeout", setTimeout(scan, 500));
-
-                    } else {
-                        $.data(currentElem[0], "timeout", setTimeout(scan, 500));
                     }
                 };//end snapshot function
 
@@ -49,7 +44,7 @@
                     $.data(currentElem[0], "stream", stream);
 
                     video.play();
-                    $.data(currentElem[0], "timeout", setTimeout(scan, 1000));
+                    $.data(currentElem[0], "timeout", setInterval(scan, 500));
                 };
 
                 // Call the getUserMedia method with our callback functions
@@ -74,7 +69,7 @@
                     videoTrack.stop();
                 });
 
-                clearTimeout($(this).data('timeout'));
+                clearInterval($(this).data('timeout'));
             });
         }
     });
