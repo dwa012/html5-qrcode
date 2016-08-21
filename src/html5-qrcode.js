@@ -14,7 +14,8 @@
                 if (width == null) {
                     width = 300;
                 }
-
+                //Remove current items in parent element so it does add a new one
+                currentElem.empty();
                 var vidElem = $('<video width="' + width + 'px" height="' + height + 'px"></video>').appendTo(currentElem);
                 var canvasElem = $('<canvas id="qr-canvas" width="' + (width - 2) + 'px" height="' + (height - 2) + 'px" style="display:none;"></canvas>').appendTo(currentElem);
 
