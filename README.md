@@ -12,13 +12,13 @@ The decoder used for the QRcode reading is from LazarSoft
 
 ###Demo
 ----------------------
-See a demo here [http://dwa012.github.io/html5-qrcode/](http://dwa012.github.io/html5-qrcode/)
+See a demo here [https://dwa012.github.io/html5-qrcode/](https://dwa012.github.io/html5-qrcode/)
 
 
 
 ###Usage
 ----------------------
-Include ```html5_qrcode.min.js``` in the ```lib``` directory.
+Include ```jQuery``` as well as the two supplied files in the lib directory; ```html5_qrcode.min.js```, and ```jsqrcode-combined.min.js```.
 
 Create a basic ```<div>``` with a given width and height. 
 
