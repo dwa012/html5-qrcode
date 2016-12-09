@@ -3,6 +3,13 @@
         html5_qrcode: function(qrcodeSuccess, qrcodeError, videoError) {
             return this.each(function() {
                 var currentElem = $(this);
+                
+                 if (typeof camera != 'undefined' && typeof cameraIds[camera] != 'undefined')
+                    $.data(currentElem[0], "sourceId", camera);
+                else $.data(currentElem[0], "sourceId", 0);
+
+                if (typeof cameraIds[currentElem.data('sourceId')] != 'undefined')
+                    $.data(currentElem[0], "cameraId", cameraIds[currentElem.data('sourceId')] );
 
                 var height = currentElem.height();
                 var width = currentElem.width();
@@ -76,6 +83,18 @@
 
                 clearTimeout($(this).data('timeout'));
             });
-        }
+        },
+        html5_qrcode_changeCamera: function() {
+            return this.each(function() {
+                //stop the stream and cancel timeouts
+                $(this).html5_qrcode_stop();
+                $(this).html5_qrcode(
+                    $(this).data('qrcodeSuccess'),
+                    $(this).data('qrcodeError'),
+                    $(this).data('videoError'),
+                    ($(this).data('sourceId') + 1) % cameraIds.length
+                );
+            });
+        },
     });
 })(jQuery);
