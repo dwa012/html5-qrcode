@@ -15,7 +15,7 @@
                     width = 300;
                 }
 
-                var vidElem = $('<video width="' + width + 'px" height="' + height + 'px"></video>').appendTo(currentElem);
+                var vidElem = $('<video width="' + width + 'px" height="' + height + 'px" autoplay></video>').appendTo(currentElem);
                 var canvasElem = $('<canvas id="qr-canvas" width="' + (width - 2) + 'px" height="' + (height - 2) + 'px" style="display:none;"></canvas>').appendTo(currentElem);
 
                 var video = vidElem[0];
@@ -25,7 +25,7 @@
 
                 var scan = function() {
                     if (localMediaStream) {
-                        context.drawImage(video, 0, 0, 307, 250);
+                        context.drawImage(video, 0, 0, width - 2, height - 2);
 
                         try {
                             qrcode.decode();
