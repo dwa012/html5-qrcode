@@ -43,7 +43,7 @@ Then call the ```html5_qrcode``` function on the ```div```.
 );
 ```
 
-It takes three callbacks: a ```readSuccess```, ```readError```, and ```videoLoadError```. The readError wil be called quite often, it is really only useful for debugging. 
+It takes three callbacks: a ```readSuccess```, ```readError```, and ```videoLoadError```. The readError will be called quite often, it is really only useful for debugging. 
 
 ```videoError``` is called if the HTML5 video stream cannot be opened.
 
