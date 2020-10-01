@@ -1,4 +1,5 @@
-#HTML5 QR Code Reader
+                                                                HTML5 QR Code Reader
+                                                               ---------------------
 
 
 ###Description
