@@ -7,12 +7,13 @@
 
 This is a cross platform jQuery library to create a QRcode reader for HTML5 compatible browser.
 
-The decoder used for the QRcode reading is from LazarSoft
+The decoder used for the QRcode reading is from LazarSoft:-
 [https://github.com/LazarSoft/jsqrcode](https://github.com/LazarSoft/jsqrcode)
 
 ###Demo
 ----------------------
-See a demo here [http://dwa012.github.io/html5-qrcode/](http://dwa012.github.io/html5-qrcode/)
+See a demo here:-
+ [http://dwa012.github.io/html5-qrcode/](http://dwa012.github.io/html5-qrcode/)
 
 
 
