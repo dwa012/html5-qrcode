@@ -12,7 +12,8 @@ The decoder used for the QRcode reading is from LazarSoft
 
 ###Demo
 ----------------------
-See a demo here [http://dwa012.github.io/html5-qrcode/](http://dwa012.github.io/html5-qrcode/)
+See a demo here:-
+ [http://dwa012.github.io/html5-qrcode/](http://dwa012.github.io/html5-qrcode/)
 
 
 
