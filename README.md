@@ -12,7 +12,7 @@ The decoder used for the QRcode reading is from LazarSoft
 
 ###Demo
 ----------------------
-See a demo here [http://dwa012.github.io/html5-qrcode/](http://dwa012.github.io/html5-qrcode/)
+See a fentastic demo here [http://dwa012.github.io/html5-qrcode/](http://dwa012.github.io/html5-qrcode/)
 
 
 
@@ -43,7 +43,7 @@ Then call the ```html5_qrcode``` function on the ```div```.
 );
 ```
 
-It takes three callbacks: a ```readSuccess```, ```readError```, and ```videoLoadError```. The readError wil be called quite often, it is really only useful for debugging. 
+It takes three callbacks: a ```readSuccess```, ```readError```, and ```videoLoadError```. The read Error wil be called quite of ten, it is really only useful for debugging and afetr read your code. 
 
 ```videoError``` is called if the HTML5 video stream cannot be opened.
 
