@@ -1,12 +1,6 @@
--------------------
-
 # HTML5 QR Code Reader
 
-
-
 ### Description
---------------
-
 
 This is a cross platform jQuery library to create a QRcode reader for HTML5 compatible browser.
 
@@ -15,12 +9,12 @@ The decoder used for the QRcode reading is from LazarSoft
 
 ### Demo
 ----------------------
-See a demo here [http://dwa012.github.io/html5-qrcode/](http://dwa012.github.io/html5-qrcode/)
+See a demo here [https://dwa012.github.io/html5-qrcode/](https://dwa012.github.io/html5-qrcode/)
 
 
 
 ### Usage
-----------------------
+
 Include ```html5_qrcode.min.js``` in the ```lib``` directory.
 
 Create a basic ```<div>``` with a given width and height. 
@@ -56,7 +50,6 @@ When you're done using the camera, call `$('#reader').html5_qrcode_stop()` to st
 
 
 ### Development
-----------------------
 
 To create your own builds, you can use [Grunt](http://gruntjs.com/). 
 A gruntfile has been set up to create minified versions of `html5-qrcode.js` and `jsqrcode-combined.js`.
@@ -68,7 +61,7 @@ Now, to build the minified versions just run `grunt` from the project directory 
 
 
 ### MIT LICENSE
---------------
+
 
 Copyright &copy; 2013 Daniel Ward
 
