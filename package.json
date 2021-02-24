@@ -1,5 +1,5 @@
 {
-  "name": "html5-qrcode",
+  "name": "html5-qrcode1",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -16,10 +16,10 @@
     "type": "git",
     "url": "https://github.com/dwa012/html5-qrcode.git"
   },
-  "author": "",
+  "author": " ",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/dwa012/html5-qrcode/issues"
   },
-  "homepage": "https://github.com/dwa012/html5-qrcode"
+  "homepage": "https://github.com/dwa012/html5-qrcode1"
 }
