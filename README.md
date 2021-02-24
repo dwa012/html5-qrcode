@@ -8,17 +8,15 @@ The decoder used for the QRcode reading is from LazarSoft
 [https://github.com/LazarSoft/jsqrcode](https://github.com/LazarSoft/jsqrcode)
 
 ### Demo
-----------------------
+
 See a demo here [https://dwa012.github.io/html5-qrcode/](https://dwa012.github.io/html5-qrcode/)
 
 
-###Usage
-----------------------
+### Usage
 
 Include:
 - ```jQuery```
 - The two supplied files in the lib directory; ```html5_qrcode.min.js```, and ```jsqrcode-combined.min.js```.
-
 
 Create a basic ```<div>``` with a given width and height. 
 
@@ -64,7 +62,6 @@ Now, to build the minified versions just run `grunt` from the project directory 
 
 
 ### MIT LICENSE
-
 
 Copyright &copy; 2013 Daniel Ward
 
