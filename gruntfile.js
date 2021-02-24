@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         uglify: {
             dist: {
                 files: {
-                    'lib/jsqrcode-combined.min.js': [
+                    'src/jsqrcode-combined.min.js': [
                         "src/jsqrcode/src/grid.js",
                         "src/jsqrcode/src/version.js",
                         "src/jsqrcode/src/detector.js",
@@ -24,9 +24,12 @@ module.exports = function(grunt) {
                         "src/jsqrcode/src/QRCode.js",
                         "src/jsqrcode/src/findpat.js",
                         "src/jsqrcode/src/alignpat.js",
-                        "src/jsqrcode/src/databr.js",
+                        "src/jsqrcode/src/databr.js"
                     ],
-                    'lib/html5-qrcode.min.js': ['src/html5-qrcode.js']
+                    'lib/html5-qrcode.min.js': [
+                        "src/jsqrcode-combined.min.js",
+                        'src/html5-qrcode.js'
+                    ]
                 },
                 options: {
                     beautify: false,
